@@ -4,8 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
-// Replace with your actual Mapbox access token
-mapboxgl.accessToken = 'OiJjbTQxOG4wZnYyNjliMmtxenI3YnB0YWZiIn0.Ma6q4LktFQeToJ-Qgp40sg'
+mapboxgl.accessToken = process.env.MAP_BOX_KEY!;
 
 const properties = [
   { id: 1, lat: 6.5244, lng: 3.3792, title: 'Modern Apartment', price: '$250,000' },
@@ -21,7 +20,7 @@ export default function InteractiveMap() {
   const [zoom] = useState(11)
 
   useEffect(() => {
-    if (map.current) return // initialize map only once
+    if (map.current) return 
     map.current = new mapboxgl.Map({
       container: mapContainer.current!,
       style: 'mapbox://styles/mapbox/streets-v11',
